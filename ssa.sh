@@ -12,12 +12,11 @@ do
     components=(${line//,/ })
     start=${components[0]}
     end=${components[1]}
-    filename="./output/"${components[2]}_$(date "+%Y%m%d").mov
 
-    echo $end
-    # ffmpeg -ss [start] -i [input] -to [end] -c copy [output]
-    command=`ffmpeg -ss $start -i $video_path -to $end -c copy $filename`
+    filename="./output/"${components[2]}_$(date "+%s").mov
+    command=`ffmpeg -i $video_path -ss $start -to $end -c copy $filename`
     echo "====剪辑完成===="
+    sleep=`sleep 1`     # 防止重名，阻塞1s
 done
 
 echo `open ./output`
