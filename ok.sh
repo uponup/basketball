@@ -1,7 +1,7 @@
 #! /bin/bash
 echo "====开始剪辑===="
 
-start="00:00:07"
+start="00:00:18"
 for file in ./videos/*
 do
     if test -f $file
